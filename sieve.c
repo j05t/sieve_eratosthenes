@@ -9,10 +9,10 @@ uint64_t *sieve(uint64_t limit, int *status, size_t *primeCount) {
 
     if (limit < 2) *status = SIEVE_INVALID_ARGUMENT;
 
-    if ((prime = malloc(sizeof(char) * (limit + 1))))
+    if ((prime = malloc(sizeof(char) * (limit + 1)))) {
         for (uint64_t i = 0; i <= limit; i++)
             prime[i] = 1;
-    else *status = SIEVE_OUT_OF_MEMORY;
+    } else *status = SIEVE_OUT_OF_MEMORY;
 
     if (*status != SIEVE_OK) return NULL;
 

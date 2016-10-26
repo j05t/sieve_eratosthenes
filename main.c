@@ -10,9 +10,9 @@ int main(int argc, char *argv[]) {
     size_t primeCount = 0;
 
     if (argc == 3) {
-        if (strcmp(argv[1], "-p") == 0) {
+        if (strcmp(argv[1], "-p") == 0)
             print = 1;
-        }
+
         limit = strtoull(argv[2], NULL, 10);
     } else if (argc == 2) {
         limit = strtoull(argv[1], NULL, 10);
@@ -20,19 +20,15 @@ int main(int argc, char *argv[]) {
         printf("Usage: %s [-p] limit\n", argv[0]);
     }
 
-    if (print)
-        printf("will print results\n");
-    printf("limit: %llu \n", limit);
+    if ((result = sieve(limit, &status, &primeCount)) && status == SIEVE_OK) {
+        if (print)
+            for (uint64_t i = 0; i < primeCount; i++)
+                printf("%llu ", result[i]);
+        else
+            printf("Primes found: %zu\n", primeCount);
 
-    result = sieve(limit, &status, &primeCount);
+        printf("\n");
+    }
 
-    if (print)
-        for (uint64_t i = 0; i < primeCount; i++)
-            printf("%llu ", result[i]);
-    else
-        printf("\nPrimes found: %zu\n", primeCount);
-
-    printf("\nPrimes found: %zu\n", primeCount);
-
-    return 0;
+    return status;
 }

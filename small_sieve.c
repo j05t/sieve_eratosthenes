@@ -19,16 +19,16 @@ uint64_t *small_sieve(uint64_t limit, int *status, size_t *primeCount) {
 
     if (*status == SIEVE_OK) {
         for (uint64_t p = 2; p <= limit; p++)
-            if (TestBit(prime,p)) {
+            if (TestBit(prime, p)) {
                 (*primeCount)++;
                 for (uint64_t i = p * 2; i <= limit; i += p)
-                    ClearBit(prime,i);
+                    ClearBit(prime, i);
             }
     } else return NULL;
 
     if ((result = malloc(sizeof(uint64_t) * (*primeCount)))) {
         for (uint64_t i = 2; i < limit; i++)
-            if (TestBit(prime,i))
+            if (TestBit(prime, i))
                 result[index++] = i;
     } else *status = SIEVE_OUT_OF_MEMORY;
 

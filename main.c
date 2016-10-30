@@ -5,7 +5,7 @@
 
 #define SMALL_SIEVE 0
 
-#ifdef SMALL_SIEVE
+#if SMALL_SIEVE
 #include "small_sieve.h"
 #endif
 
@@ -25,7 +25,8 @@ int main(int argc, char *argv[]) {
         printf("Usage: %s [-p] limit\n", argv[0]);
     }
 
-#ifdef SMALL_SIEVE
+#if SMALL_SIEVE
+    printf("using small sieve\n");
     result = small_sieve(limit, &status, &primeCount);
 #else
     result = sieve(limit, &status, &primeCount);

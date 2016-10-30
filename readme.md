@@ -15,7 +15,7 @@ Primes found: 203280221
 
 real	3m31.526s
 user	3m31.020s
-sys   0m0.464s
+sys     0m0.464s
 ```
 
 SMALL_SIEVE disabled: 4 GB RAM
@@ -26,5 +26,5 @@ Primes found: 203280221
 
 real	2m58.230s
 user	2m56.992s
-sys   0m1.212s
+sys     0m1.212s
 ```

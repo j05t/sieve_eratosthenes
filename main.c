@@ -3,6 +3,11 @@
 #include <stdlib.h>
 #include "sieve.h"
 
+#define SMALL_SIEVE 0
+
+#ifdef SMALL_SIEVE
+#include "small_sieve.h"
+#endif
 
 int main(int argc, char *argv[]) {
     uint64_t limit = 0, *result = NULL;
@@ -20,12 +25,18 @@ int main(int argc, char *argv[]) {
         printf("Usage: %s [-p] limit\n", argv[0]);
     }
 
-    if ((result = sieve(limit, &status, &primeCount)) && status == SIEVE_OK) {
+#ifdef SMALL_SIEVE
+    result = small_sieve(limit, &status, &primeCount);
+#else
+    result = sieve(limit, &status, &primeCount);
+#endif
+
+    if (result && status == SIEVE_OK) {
         if (print)
             for (uint64_t i = 0; i < primeCount; i++)
                 printf("%llu ", result[i]);
         else
-            printf("Primes found: %zu\n", primeCount);
+            printf("Primes found: %zu", primeCount);
 
         printf("\n");
         free(result);

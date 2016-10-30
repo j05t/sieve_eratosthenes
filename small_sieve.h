@@ -9,5 +9,5 @@
 typedef unsigned long long uint64_t;
 typedef unsigned int uint32_t;
 
-uint64_t *sieve(uint64_t limit, int *status, size_t *primeCount);
+uint64_t *small_sieve(uint64_t limit, int *status, size_t *primeCount);
 

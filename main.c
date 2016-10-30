@@ -28,6 +28,7 @@ int main(int argc, char *argv[]) {
             printf("Primes found: %zu\n", primeCount);
 
         printf("\n");
+        free(result);
     }
 
     return status;

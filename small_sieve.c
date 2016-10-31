@@ -1,8 +1,9 @@
 #include <stdlib.h>
-#include "small_sieve.h"
 #include <limits.h>
 #include <string.h>
 #include <stdio.h>
+#include "sieve.h"
+#include "small_sieve.h"
 
 uint64_t *small_sieve(uint64_t limit, int *status, size_t *primeCount) {
     uint64_t *result = NULL, index = 0, size;
